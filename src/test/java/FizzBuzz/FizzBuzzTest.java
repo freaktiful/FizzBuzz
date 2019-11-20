@@ -19,7 +19,7 @@ public class FizzBuzzTest {
     
     public class FizzBuzz {
     	public String fizzBuzz(int number) {
-    		return "";
+    		return "fizz";
     	}
     }
 }
