@@ -10,37 +10,33 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class FizzBuzzTest {
 	
 	FizzBuzzer fizzBuzzer = new FizzBuzzer();
 
-    @Test 
-    public void WhenAMultipleOf3IsPassedItReturnsFizz() {
-        assertEquals("fizz", fizzBuzzer.fizzBuzz(3));
-        assertEquals("fizz", fizzBuzzer.fizzBuzz(6));
-        assertEquals("fizz", fizzBuzzer.fizzBuzz(9));
-    }
-
-    @Test 
-    public void WhenAMultipleOf5IsPassedItReturnsBuzz() {
-        assertEquals("buzz", fizzBuzzer.fizzBuzz(5));
-        assertEquals("buzz", fizzBuzzer.fizzBuzz(10));
-        assertEquals("buzz", fizzBuzzer.fizzBuzz(20));
-    }
-    
-    @Test
-    public void WhenAMultipleOf15IsPassedItReturnsFizzBuzz() {
-    	assertEquals("fizzbuzz", fizzBuzzer.fizzBuzz(15));
-    	assertEquals("fizzbuzz", fizzBuzzer.fizzBuzz(30));
-    	assertEquals("fizzbuzz", fizzBuzzer.fizzBuzz(45));
-    }
-    
-    @Test
-    public void WhenNoRequirementIsFulfilledItReturnsTheNumber() {
-    	assertEquals("4", fizzBuzzer.fizzBuzz(4));
-    	assertEquals("7", fizzBuzzer.fizzBuzz(7));
-    	assertEquals("8", fizzBuzzer.fizzBuzz(8));
+	@ParameterizedTest 
+    @CsvSource(
+    		{"15, fizzbuzz",
+            "3, fizz",
+            "4, 4",
+            "5, buzz",
+            "6, fizz",
+            "7, 7",
+            "8, 8",
+            "9, fizz",
+            "10, buzz",
+            "15, fizzbuzz",
+            "20, buzz",
+            "30, fizzbuzz",
+            "45, fizzbuzz"
+            }
+        )
+    public void WhenAMultipleOf3IsPassedItReturnsFizz(int in, String out) {
+        assertEquals(out, fizzBuzzer.fizzBuzz(in));
+        
     }
     
     List<String> stringOutput = new ArrayList<String>(Arrays.asList( "1","2","fizz","4","buzz","fizz", "7","8", "fizz", "buzz", "11", "fizz", "13", "14", "fizzbuzz",
