@@ -14,16 +14,29 @@ public class FizzBuzzTest {
     @Test 
     public void WhenAMultipleOf3IsPassedItReturnsFizz() {
         assertEquals("fizz", fizzBuzzer.fizzBuzz(3));
+        assertEquals("fizz", fizzBuzzer.fizzBuzz(6));
+        assertEquals("fizz", fizzBuzzer.fizzBuzz(9));
     }
 
     @Test 
     public void WhenAMultipleOf5IsPassedItReturnsBuzz() {
         assertEquals("buzz", fizzBuzzer.fizzBuzz(5));
+        assertEquals("buzz", fizzBuzzer.fizzBuzz(10));
+        assertEquals("buzz", fizzBuzzer.fizzBuzz(20));
     }
     
     @Test
     public void WhenAMultipleOf15IsPassedItReturnsFizzBuzz() {
     	assertEquals("fizzbuzz", fizzBuzzer.fizzBuzz(15));
+    	assertEquals("fizzbuzz", fizzBuzzer.fizzBuzz(30));
+    	assertEquals("fizzbuzz", fizzBuzzer.fizzBuzz(45));
+    }
+    
+    @Test
+    public void WhenNoRequirementIsFulfilledItReturnsTheNumber() {
+    	assertEquals("4", fizzBuzzer.fizzBuzz(4));
+    	assertEquals("7", fizzBuzzer.fizzBuzz(7));
+    	assertEquals("8", fizzBuzzer.fizzBuzz(8));
     }
     
     public class FizzBuzz {
@@ -35,7 +48,7 @@ public class FizzBuzzTest {
     		if (number%5 == 0) {
     			output += "buzz";
     		}
-    		return output;
+    		return output!=""?output:String.valueOf(number);
     	}
     }
 }
