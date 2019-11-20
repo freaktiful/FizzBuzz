@@ -8,6 +8,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 
@@ -63,11 +65,8 @@ public class FizzBuzzTest {
     	}
 
 		public List<String> fizzBuzzer(int number) {
-			List<String> output = new ArrayList<String>();
-			for(int i=1; i<=number; i++) {
-				output.add(fizzBuzz(i));
-			}
-			return output;
+			List<Integer> range = IntStream.rangeClosed(1, number).boxed().collect(Collectors.toList());
+			return range.stream().map(x -> fizzBuzz(x)).collect(Collectors.toList());
 		}
     }
 }
