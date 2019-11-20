@@ -21,14 +21,21 @@ public class FizzBuzzTest {
         assertEquals("buzz", fizzBuzzer.fizzBuzz(5));
     }
     
+    @Test
+    public void WhenAMultipleOf15IsPassedItReturnsFizzBuzz() {
+    	assertEquals("fizzbuzz", fizzBuzzer.fizzBuzz(15));
+    }
+    
     public class FizzBuzz {
     	public String fizzBuzz(int number) {
+    		String output = "";
     		if(number%3 == 0) {
-    			return "fizz";
-    		} else if (number%5 == 0) {
-    			return "buzz";
+    			output += "fizz";
+    		} 
+    		if (number%5 == 0) {
+    			output += "buzz";
     		}
-    		return "";
+    		return output;
     	}
     }
 }
