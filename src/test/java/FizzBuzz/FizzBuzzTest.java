@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class FizzBuzzTest {
 	
-	FizzBuzz fizzBuzzer = new FizzBuzz();
+	FizzBuzzer fizzBuzzer = new FizzBuzzer();
 
     @Test 
     public void WhenAMultipleOf3IsPassedItReturnsFizz() {
@@ -52,16 +52,15 @@ public class FizzBuzzTest {
     	assertEquals(stringOutput, fizzBuzzer.fizzBuzzer(15));
     }
     
-    public class FizzBuzz {
+    public class FizzBuzzer {
+    	
+    	List<FizzBuzzerInterface> FizzBuzzSequence =
+    			Arrays.asList(new FizzBuzz(), new Number(), new Number(), new Fizz(), new Number(), new Buzz(), 
+    					      new Fizz(), new Number(), new Number(), new Fizz(), new Buzz(), new Number(), 
+    					      new Fizz(), new Number(), new Number());
+    	
     	public String fizzBuzz(int number) {
-    		String output = "";
-    		if(number%3 == 0) {
-    			output += "fizz";
-    		} 
-    		if (number%5 == 0) {
-    			output += "buzz";
-    		}
-    		return output!=""?output:String.valueOf(number);
+    		return FizzBuzzSequence.get(number%15).fizzBuzz(number);
     	}
 
 		public List<String> fizzBuzzer(int number) {
@@ -69,4 +68,38 @@ public class FizzBuzzTest {
 			return range.stream().map(x -> fizzBuzz(x)).collect(Collectors.toList());
 		}
     }
+    
+    public interface FizzBuzzerInterface {
+    	public String fizzBuzz(int number);
+    }
+    
+    public class Fizz implements FizzBuzzerInterface {
+		@Override
+		public String fizzBuzz(int number) {
+			return "fizz";
+		}
+    	
+    }
+    
+    public class Buzz implements FizzBuzzerInterface {
+    	@Override
+    	public String fizzBuzz(int number) {
+    		return "buzz";
+    	}
+    }
+    
+    public class FizzBuzz implements FizzBuzzerInterface {
+    	@Override
+    	public String fizzBuzz(int number) {
+    		return "fizzbuzz";
+    	}
+    }
+    
+    public class Number implements FizzBuzzerInterface {
+    	@Override
+    	public String fizzBuzz(int number) {
+    		return String.valueOf(number);
+    	}
+    }
+    
 }
