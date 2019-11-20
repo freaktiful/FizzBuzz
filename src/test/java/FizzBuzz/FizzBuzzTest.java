@@ -10,16 +10,25 @@ import org.junit.Test;
 public class FizzBuzzTest {
 	
 	FizzBuzz fizzBuzzer = new FizzBuzz();
-	
-    @Test public void WhenAMultipleOf3IsPassedItReturnsFizz() {
-        
+
+    @Test 
+    public void WhenAMultipleOf3IsPassedItReturnsFizz() {
         assertEquals("fizz", fizzBuzzer.fizzBuzz(3));
     }
-    
+
+    @Test 
+    public void WhenAMultipleOf5IsPassedItReturnsBuzz() {
+        assertEquals("buzz", fizzBuzzer.fizzBuzz(5));
+    }
     
     public class FizzBuzz {
     	public String fizzBuzz(int number) {
-    		return "fizz";
+    		if(number%3 == 0) {
+    			return "fizz";
+    		} else if (number%5 == 0) {
+    			return "buzz";
+    		}
+    		return "";
     	}
     }
 }
