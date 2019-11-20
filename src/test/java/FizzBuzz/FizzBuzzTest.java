@@ -8,8 +8,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.junit.Test;
 
@@ -45,61 +43,12 @@ public class FizzBuzzTest {
     	assertEquals("8", fizzBuzzer.fizzBuzz(8));
     }
     
-    List<String> stringOutput = new ArrayList<String>(Arrays.asList( "1","2","fizz","4","buzz","fizz", "7","8", "fizz", "buzz", "11", "fizz", "13", "14", "fizzbuzz")); 
+    List<String> stringOutput = new ArrayList<String>(Arrays.asList( "1","2","fizz","4","buzz","fizz", "7","8", "fizz", "buzz", "11", "fizz", "13", "14", "fizzbuzz",
+    		 "16","17","fizz","19","buzz","fizz", "22","23", "fizz", "buzz", "26", "fizz", "28", "29", "fizzbuzz")); 
     
     @Test
     public void WriteTheWholeSequenceOfFizzBuzzerUntilTheProvidedNumber() {
-    	assertEquals(stringOutput, fizzBuzzer.fizzBuzzer(15));
-    }
-    
-    public class FizzBuzzer {
-    	
-    	List<FizzBuzzerInterface> FizzBuzzSequence =
-    			Arrays.asList(new FizzBuzz(), new Number(), new Number(), new Fizz(), new Number(), new Buzz(), 
-    					      new Fizz(), new Number(), new Number(), new Fizz(), new Buzz(), new Number(), 
-    					      new Fizz(), new Number(), new Number());
-    	
-    	public String fizzBuzz(int number) {
-    		return FizzBuzzSequence.get(number%15).fizzBuzz(number);
-    	}
-
-		public List<String> fizzBuzzer(int number) {
-			List<Integer> range = IntStream.rangeClosed(1, number).boxed().collect(Collectors.toList());
-			return range.stream().map(x -> fizzBuzz(x)).collect(Collectors.toList());
-		}
-    }
-    
-    public interface FizzBuzzerInterface {
-    	public String fizzBuzz(int number);
-    }
-    
-    public class Fizz implements FizzBuzzerInterface {
-		@Override
-		public String fizzBuzz(int number) {
-			return "fizz";
-		}
-    	
-    }
-    
-    public class Buzz implements FizzBuzzerInterface {
-    	@Override
-    	public String fizzBuzz(int number) {
-    		return "buzz";
-    	}
-    }
-    
-    public class FizzBuzz implements FizzBuzzerInterface {
-    	@Override
-    	public String fizzBuzz(int number) {
-    		return "fizzbuzz";
-    	}
-    }
-    
-    public class Number implements FizzBuzzerInterface {
-    	@Override
-    	public String fizzBuzz(int number) {
-    		return String.valueOf(number);
-    	}
+    	assertEquals(stringOutput, fizzBuzzer.fizzBuzzer(30));
     }
     
 }
