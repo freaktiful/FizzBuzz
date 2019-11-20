@@ -3,7 +3,7 @@
  */
 package FizzBuzz;
 
-public class Library {
+public class FizzBuzz {
     public boolean someLibraryMethod() {
         return true;
     }
