@@ -5,6 +5,10 @@ package FizzBuzz;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 
 public class FizzBuzzTest {
@@ -39,6 +43,13 @@ public class FizzBuzzTest {
     	assertEquals("8", fizzBuzzer.fizzBuzz(8));
     }
     
+    List<String> stringOutput = new ArrayList<String>(Arrays.asList( "1","2","fizz","4","buzz","fizz", "7","8", "fizz", "buzz", "11", "fizz", "13", "14", "fizzbuzz")); 
+    
+    @Test
+    public void WriteTheWholeSequenceOfFizzBuzzerUntilTheProvidedNumber() {
+    	assertEquals(stringOutput, fizzBuzzer.fizzBuzzer(15));
+    }
+    
     public class FizzBuzz {
     	public String fizzBuzz(int number) {
     		String output = "";
@@ -50,5 +61,13 @@ public class FizzBuzzTest {
     		}
     		return output!=""?output:String.valueOf(number);
     	}
+
+		public List<String> fizzBuzzer(int number) {
+			List<String> output = new ArrayList<String>();
+			for(int i=1; i<=number; i++) {
+				output.add(fizzBuzz(i));
+			}
+			return output;
+		}
     }
 }
