@@ -36,7 +36,7 @@ public class FizzBuzzTest {
             }
         )
     public void WhenAMultipleOf3IsPassedItReturnsFizz(int in, String out) {
-        assertEquals(out, fizzBuzzer.fizzBuzz(in));
+        assertEquals(out, fizzBuzzer.fizzBuzz(in));   
         
     }
     
